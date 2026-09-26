@@ -39,38 +39,33 @@ async def caiocroti(
     interaction: discord.Interaction,
     points: int,
 ):
+    # Calcula a pontuação do Caio Croti
     pontuacao = round(points / 6)
 
-    if 1 <= pontuacao <= 117:
+    # Define a faixa usando os POINTS originais
+    if 1 <= points <= 117:
         faixa = 1
         mensagem = "Você está na Faixa 1! 🟢"
 
-    elif 118 <= pontuacao <= 233:
+    elif 118 <= points <= 233:
         faixa = 2
         mensagem = "Você está na Faixa 2! 🔵"
 
-    elif 234 <= pontuacao <= 350:
+    elif 234 <= points <= 350:
         faixa = 3
         mensagem = "Você está na Faixa 3! 🟣"
 
-    elif 351 <= pontuacao <= 466:
+    elif 351 <= points <= 466:
         faixa = 4
         mensagem = "Você está na Faixa 4! 🟠"
 
-    elif 467 <= pontuacao <= 583:
+    elif points >= 467:
         faixa = 5
-        mensagem = "Você está na Faixa 5! 🔴"
-
-    elif 584 <= pontuacao <= 700:
-        faixa = 6
-        mensagem = "Você está na Faixa 6! 🏆"
+        mensagem = "Você está na Faixa 5! 🏆"
 
     else:
         faixa = None
-        mensagem = (
-            "A pontuação calculada está fora das faixas "
-            "disponíveis."
-        )
+        mensagem = "Os pontos precisam ser maiores que 0."
 
     if faixa is not None:
         await interaction.response.send_message(
@@ -85,6 +80,3 @@ async def caiocroti(
             f"Pontuação Caio Croti: **{pontuacao}**\n\n"
             f"{mensagem}"
         )
-
-
-bot.run(TOKEN)
