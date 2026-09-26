@@ -64,36 +64,34 @@ async def caiocroti(
     # Mensagens provisórias
     mensagens = {
         1: (
-            "**Level 1 de AVCaio Score**\n"
             "Condenem-me não me importa, a história me absolverá"
         ),
         2: (
-            "**Level 2 de AVCaio Score**\n"
             "Estou buscando a melhora"
         ),
         3: (
-            "**Level 3 de AVCaio Score🚀**\n"
+            "**3 de AVCaio Score🚀**\n"
         ),
         4: (
-            "**Level 4 de AVCaio Score🚀**\n"
+            "**4 de AVCaio Score🚀**\n"
         ),
         5: (
-            "**Level 5 de AVCaio Score 🚀**\n"
+            "**5 de AVCaio Score 🚀**\n"
         ),
         6: (
-            "*Level 6 de AVCaio Score 🔥**\n"
+            "*6 de AVCaio Score 🔥**\n"
         ),
         7: (
-            "**Level 7 de AVCaio Score 💀**\n"
+            "**7 de AVCaio Score 💀**\n"
         ),
         8: (
-            "**Level 8 de AVCaio Score ⚡**\n"
+            "**8 de AVCaio Score ⚡**\n"
         ),
         9: (
-            "**Level 9 de AVC Score 👑**\n"
+            "**9 de AVC Score 👑**\n"
         ),
         10: (
-            "Isso aqui já não pode ser considerado normal. Você ultrapassou todas as expectativas e entrou oficialmente na fora da curva caiolisticas."
+            "Você ultrapassou todas as expectativas e entrou oficialmente na fora da curva caiolisticas."
         ),
     }
 
@@ -107,10 +105,10 @@ async def caiocroti(
 
     # Cria o embed.
     embed = discord.Embed(
-        title=f"[TEST] 🏆 FASE {fase}",
+        title=f"🏆 Level {fase}",
         description=(
             f"📊 **Points recebidos:** {points}\n"
-            f"⚔️ **Em média de combate Caio Croti:** "
+            f"⚔️ **Em média de combate AVCaio Score:** "
             f"{pontuacao} pontos\n\n"
             f"{mensagem}"
         ),
