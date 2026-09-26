@@ -48,67 +48,88 @@ async def caiocroti(
     interaction: discord.Interaction,
     points: int,
 ):
-    pontuacao = round(points / 6)
-
-    if 1 <= points <= 117:
-        faixa = 1
-        mensagem = (
-            "[TEST] **NEON⚡**\n"
-            "Você tem pontos equivalentes a Neon do Caio \n"
-            "Ainda há muito chão pela frente, mas pelo menos você está tentando."
-        )
-
-    elif 118 <= points <= 233:
-        faixa = 2
-        mensagem = (
-            "[TEST] **RAZE💥**\n"
-            "Você está ao menos esta fazendo o entry — embora ninguém saiba exatamente qual era o seu plano.\n"
-        )
-
-    elif 234 <= points <= 350:
-        faixa = 3
-        mensagem = (
-            "[TEST] **SOVA 🏹**\n"
-            "Você chegou naquele nível em que escolhe Sova... \n"
-            "Flecha? Drone? Revelação? Nada disso.\n"
-            "**É só bala.**"
-        )
-
-    elif 351 <= points <= 466:
-        faixa = 4
-        mensagem = (
-            "[TEST] **SKYE 🦅**\n"
-            "Você já não está simplesmente jogando. Você está fazendo historia carregando o caio.\n"
-            "**O time agradece, suas costas não.**"
-        )
-
-    elif points >= 467:
-        faixa = 5
-        mensagem = (
-            "[TEST] **FORA DA CURVA 🚀**\n"
-            "Isso aqui já não pode ser considerado normal.\n"
-            "Você ultrapassou todas as expectativas e entrou oficialmente na fora da curva caiolisticas.\n"
-        )
-
-    else:
-        faixa = None
-        mensagem = "[TEST] Os pontos precisam ser maiores que 0."
-
-    if faixa is not None:
+    if points <= 0:
         await interaction.response.send_message(
-            f"[TEST] 📊 **Points recebidos:** {points}\n"
-            f"[TEST] ⚔️ **Em média de combate Caio Croti:** "
-            f"{pontuacao} pontos\n\n"
-            f"[TEST] 🏆 **FAIXA {faixa}**\n\n"
-            f"{mensagem}"
+            "📊 Os pontos precisam ser maiores que 0."
         )
-    else:
-        await interaction.response.send_message(
-            f"[TEST] 📊 **Points recebidos:** {points}\n"
-            f"[TEST] ⚔️ **Em média de combate Caio Croti:** "
+        return
+
+    # Média de combate Caio Croti
+    pontuacao = round(points / 42)
+
+    # Determina a fase usando os pontos originais.
+    # Cada fase possui 42 pontos.
+    fase = min((points - 1) // 42 + 1, 10)
+
+    # Mensagens provisórias
+    mensagens = {
+        1: (
+            "**Level 1 de AVCaio Score**\n"
+            "Condenem-me não me importa, a história me absolverá"
+        ),
+        2: (
+            "**Level 2 de AVCaio Score**\n"
+            "Estou buscando a melhora"
+        ),
+        3: (
+            "**Level 3 de AVCaio Score🚀**\n"
+        ),
+        4: (
+            "**Level 4 de AVCaio Score🚀**\n"
+        ),
+        5: (
+            "**Level 5 de AVCaio Score 🚀**\n"
+        ),
+        6: (
+            "*Level 6 de AVCaio Score 🔥**\n"
+        ),
+        7: (
+            "**Level 7 de AVCaio Score 💀**\n"
+        ),
+        8: (
+            "**Level 8 de AVCaio Score ⚡**\n"
+        ),
+        9: (
+            "**Level 9 de AVC Score 👑**\n"
+        ),
+        10: (
+            "Isso aqui já não pode ser considerado normal. Você ultrapassou todas as expectativas e entrou oficialmente na fora da curva caiolisticas."
+        ),
+    }
+
+    mensagem = mensagens[fase]
+
+    # Define a extensão da imagem.
+    extensao = "jpg" if fase == 10 else "jpeg"
+
+    # Caminho da imagem dentro do projeto.
+    imagem_path = f"levels/{fase}.{extensao}"
+
+    # Cria o embed.
+    embed = discord.Embed(
+        title=f"[TEST] 🏆 FASE {fase}",
+        description=(
+            f"📊 **Points recebidos:** {points}\n"
+            f"⚔️ **Em média de combate Caio Croti:** "
             f"{pontuacao} pontos\n\n"
             f"{mensagem}"
-        )
+        ),
+    )
+
+    # Adiciona a imagem como anexo do Discord.
+    arquivo = discord.File(
+        imagem_path,
+        filename=f"level_{fase}.{extensao}"
+    )
+
+    embed.set_image(
+        url=f"attachment://level_{fase}.{extensao}"
+    )
+
+    await interaction.response.send_message(
+        embed=embed,
+        file=arquivo,
+    )
 
 
 bot.run(TOKEN)
