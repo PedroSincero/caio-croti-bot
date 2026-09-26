@@ -52,39 +52,61 @@ async def caiocroti(
 
     if 1 <= points <= 117:
         faixa = 1
-        mensagem = "Você está na Faixa 1! 🟢"
+        mensagem = (
+            "[TEST] **NEON⚡**\n"
+            "Você tem pontos equivalentes a Neon do Caio \n"
+            "Ainda há muito chão pela frente, mas pelo menos você está tentando."
+        )
 
     elif 118 <= points <= 233:
         faixa = 2
-        mensagem = "Você está na Faixa 2! 🔵"
+        mensagem = (
+            "[TEST] **RAZE💥**\n"
+            "Você está ao menos esta fazendo o entry — embora ninguém saiba exatamente qual era o seu plano.\n"
+        )
 
     elif 234 <= points <= 350:
         faixa = 3
-        mensagem = "Você está na Faixa 3! 🟣"
+        mensagem = (
+            "[TEST] **SOVA 🏹**\n"
+            "Você chegou naquele nível em que escolhe Sova... \n"
+            "Flecha? Drone? Revelação? Nada disso.\n"
+            "**É só bala.**"
+        )
 
     elif 351 <= points <= 466:
         faixa = 4
-        mensagem = "Você está na Faixa 4! 🟠"
+        mensagem = (
+            "[TEST] **SKYE 🦅**\n"
+            "Você já não está simplesmente jogando. Você está fazendo historia carregando o caio.\n"
+            "**O time agradece, suas costas não.**"
+        )
 
     elif points >= 467:
         faixa = 5
-        mensagem = "Você está na Faixa 5! 🏆"
+        mensagem = (
+            "[TEST] **FORA DA CURVA 🚀**\n"
+            "Isso aqui já não pode ser considerado normal.\n"
+            "Você ultrapassou todas as expectativas e entrou oficialmente na fora da curva caiolisticas.\n"
+        )
 
     else:
         faixa = None
-        mensagem = "Os pontos precisam ser maiores que 0."
+        mensagem = "[TEST] Os pontos precisam ser maiores que 0."
 
     if faixa is not None:
         await interaction.response.send_message(
-            f"Points recebidos: **{points}**\n"
-            f"Pontuação Caio Croti: **{pontuacao}**\n"
-            f"Faixa: **{faixa}**\n\n"
+            f"[TEST] 📊 **Points recebidos:** {points}\n"
+            f"[TEST] ⚔️ **Em média de combate Caio Croti:** "
+            f"{pontuacao} pontos\n\n"
+            f"[TEST] 🏆 **FAIXA {faixa}**\n\n"
             f"{mensagem}"
         )
     else:
         await interaction.response.send_message(
-            f"Points recebidos: **{points}**\n"
-            f"Pontuação Caio Croti: **{pontuacao}**\n\n"
+            f"[TEST] 📊 **Points recebidos:** {points}\n"
+            f"[TEST] ⚔️ **Em média de combate Caio Croti:** "
+            f"{pontuacao} pontos\n\n"
             f"{mensagem}"
         )
 
