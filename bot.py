@@ -3,14 +3,12 @@ import os
 import discord
 from discord import app_commands
 
-
 TOKEN = os.environ["DISCORD_TOKEN"]
 
 
 class CaioBot(discord.Client):
     def __init__(self):
         intents = discord.Intents.default()
-
         super().__init__(intents=intents)
 
         self.tree = app_commands.CommandTree(self)
@@ -18,9 +16,20 @@ class CaioBot(discord.Client):
     async def on_ready(self):
         print(f"Bot conectado como {self.user}")
 
+        print("\nServidores conectados:")
+        for guild in self.guilds:
+            print(f"- {guild.name} | ID: {guild.id}")
+
+        print("\nSincronizando comandos globais...")
+
         try:
             synced = await self.tree.sync()
-            print(f"{len(synced)} comando(s) sincronizado(s).")
+
+            print(f"{len(synced)} comando(s) global(is) sincronizado(s):")
+
+            for command in synced:
+                print(f"- /{command.name}")
+
         except Exception as error:
             print(f"Erro ao sincronizar comandos: {error}")
 
@@ -39,10 +48,8 @@ async def caiocroti(
     interaction: discord.Interaction,
     points: int,
 ):
-    # Calcula a pontuação do Caio Croti
     pontuacao = round(points / 6)
 
-    # Define a faixa usando os POINTS originais
     if 1 <= points <= 117:
         faixa = 1
         mensagem = "Você está na Faixa 1! 🟢"
@@ -80,3 +87,6 @@ async def caiocroti(
             f"Pontuação Caio Croti: **{pontuacao}**\n\n"
             f"{mensagem}"
         )
+
+
+bot.run(TOKEN)
