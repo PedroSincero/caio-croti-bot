@@ -70,29 +70,28 @@ async def caiocroti(
             "Estou buscando a melhora"
         ),
         3: (
-            "**3 de AVCaio Score🚀**\n"
+            "**AVCaio Score🚀**\n"
         ),
         4: (
-            "**4 de AVCaio Score🚀**\n"
+            "**AVCaio Score🚀**\n"
         ),
         5: (
-            "**5 de AVCaio Score 🚀**\n"
+            "**AVCaio Score 🚀**\n"
         ),
         6: (
-            "*6 de AVCaio Score 🔥**\n"
+            "*AVCaio Score 🔥**\n"
         ),
         7: (
-            "**7 de AVCaio Score 💀**\n"
+            "**AVCaio Score 💀**\n"
         ),
         8: (
-            "**8 de AVCaio Score ⚡**\n"
+            "**AVCaio Score ⚡**\n"
         ),
         9: (
-            "**9 de AVC Score 👑**\n"
+            "**AVC Score 👑**\n"
         ),
         10: (
-            "Você ultrapassou todas as expectativas e entrou oficialmente "
-            "na fora da curva caiolisticas."
+            "Você ultrapassou todas as expectativas e está fora da curva caiolisticas. "
         ),
     }
 
