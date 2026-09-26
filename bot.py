@@ -109,8 +109,9 @@ async def caiocroti(
         title=f"🏆 Level {level}",
         description=(
             f"📊 **Points recebidos:** {points}\n"
-            f"⚔️ **Em média de combate AVCaio Score:** "
+            f"⚔️ **Média de combate AVCaio Score:** "
             f"{pontuacao} pontos\n\n"
+            f"Ou seja, sua pontuação é equivalente a **{pontuacao}x AVG de Caio Score**.\n\n"
             f"{mensagem}"
         ),
     )
