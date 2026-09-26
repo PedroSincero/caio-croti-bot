@@ -29,22 +29,62 @@ bot = CaioBot()
 
 
 @bot.tree.command(
-    name="caiocrotch",
+    name="caiocroti",
     description="Calcula a pontuação do Caio Croti."
 )
 @app_commands.describe(
-    valor="Valor que será dividido por 6."
+    points="Pontos recebidos."
 )
-async def caiocrotch(
+async def caiocroti(
     interaction: discord.Interaction,
-    valor: int,
+    points: int,
 ):
-    pontuacao = round(valor / 6)
+    pontuacao = round(points / 6)
 
-    await interaction.response.send_message(
-        f"Valor recebido: **{valor}**\n"
-        f"Pontuação Caio Croti: **{pontuacao}**"
-    )
+    if 1 <= pontuacao <= 117:
+        faixa = 1
+        mensagem = "Você está na Faixa 1! 🟢"
+
+    elif 118 <= pontuacao <= 233:
+        faixa = 2
+        mensagem = "Você está na Faixa 2! 🔵"
+
+    elif 234 <= pontuacao <= 350:
+        faixa = 3
+        mensagem = "Você está na Faixa 3! 🟣"
+
+    elif 351 <= pontuacao <= 466:
+        faixa = 4
+        mensagem = "Você está na Faixa 4! 🟠"
+
+    elif 467 <= pontuacao <= 583:
+        faixa = 5
+        mensagem = "Você está na Faixa 5! 🔴"
+
+    elif 584 <= pontuacao <= 700:
+        faixa = 6
+        mensagem = "Você está na Faixa 6! 🏆"
+
+    else:
+        faixa = None
+        mensagem = (
+            "A pontuação calculada está fora das faixas "
+            "disponíveis."
+        )
+
+    if faixa is not None:
+        await interaction.response.send_message(
+            f"Points recebidos: **{points}**\n"
+            f"Pontuação Caio Croti: **{pontuacao}**\n"
+            f"Faixa: **{faixa}**\n\n"
+            f"{mensagem}"
+        )
+    else:
+        await interaction.response.send_message(
+            f"Points recebidos: **{points}**\n"
+            f"Pontuação Caio Croti: **{pontuacao}**\n\n"
+            f"{mensagem}"
+        )
 
 
 bot.run(TOKEN)
